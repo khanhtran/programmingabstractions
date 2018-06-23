@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	
+<canvas id="myCanvas" width="900" height="150">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+	<script>
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		ctx.beginPath();
+		//ctx.lineWidth = 3;
+		draw(ctx, 0, 10, 600, 9);
+		//line(ctx, 0, 10, 600, 10);
+		//line(ctx, 0, 20, 600, 20);
+		ctx.stroke();
+		
+		function draw(ctx, x, y, width, level) {			
+			if (level > 0) {
+				console.log("draw", "x=" + x + ", y=" + y + ", width=" + width + ", level=" + level);
+				//draw a line myself
+				line(ctx, x, y, x + width, y);			
+				//line(ctx, x, y + 10, x + width, y + 10);
+				//draw the left shape by recursive
+				draw(ctx, x, y + 10, width/3, level - 1);
+				
+				//draw the right shape by recursive
+				draw(ctx, x + 2*width/3, y + 10, width/3, level - 1);
+								
+			}
+		}
+		
+		function line(ctx, x1, y1, x2, y2) {
+			ctx.moveTo(x1, y1);
+			ctx.lineTo(x2, y2);
+		}
+		
+	</script>
+
+	
+
+</body>
+</html>
