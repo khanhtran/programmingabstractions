@@ -1,16 +1,18 @@
 package backtracking;
 
-public class PrintBinary {
+public class PrintBinary extends Recursive {
 
 	public static void main(String[] args) {
-		printBinary(3);
+		new PrintBinary().printBinary(3, "");
 	}
 
-	private static void printBinary(int n) {
-		if (n == 0 || n == 1) {
-			System.out.print(n);
+	private void printBinary(int n, String output) {
+		rprint("printBinary(" + n + ", \"" + output + "\")");
+		if (n == 0) {
+			System.out.println(output);
 		} else {
-			
+			printBinary(n - 1, output + "0");
+			printBinary(n - 1, output + "1");
 		}
 	}
 
